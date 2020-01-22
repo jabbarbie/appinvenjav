@@ -11,7 +11,16 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table appinven.barang: ~6 rows (approximately)
+-- Dumping structure for table appinven.barang
+CREATE TABLE IF NOT EXISTS `barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kodebarang` varchar(50) DEFAULT NULL,
+  `barang` varchar(50) DEFAULT NULL,
+  `anggaran` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table appinven.barang: ~7 rows (approximately)
 /*!40000 ALTER TABLE `barang` DISABLE KEYS */;
 INSERT INTO `barang` (`id`, `kodebarang`, `barang`, `anggaran`) VALUES
 	(1, '9898', 'Kursi Goyang', 190000),
@@ -23,7 +32,16 @@ INSERT INTO `barang` (`id`, `kodebarang`, `barang`, `anggaran`) VALUES
 	(7, '88888', 'Sate Kambing', 800000);
 /*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 
--- Dumping data for table appinven.realisasi: ~1 rows (approximately)
+-- Dumping structure for table appinven.realisasi
+CREATE TABLE IF NOT EXISTS `realisasi` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `barangId` int(11) DEFAULT NULL,
+  `realisasi` int(11) DEFAULT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table appinven.realisasi: ~4 rows (approximately)
 /*!40000 ALTER TABLE `realisasi` DISABLE KEYS */;
 INSERT INTO `realisasi` (`id`, `barangId`, `realisasi`, `tanggal`) VALUES
 	(1, 1, 80000, '2020-01-22 02:57:34'),
@@ -32,13 +50,28 @@ INSERT INTO `realisasi` (`id`, `barangId`, `realisasi`, `tanggal`) VALUES
 	(4, 6, 2000, '2020-01-22 07:07:30');
 /*!40000 ALTER TABLE `realisasi` ENABLE KEYS */;
 
--- Dumping data for table appinven.setting: ~0 rows (approximately)
+-- Dumping structure for table appinven.setting
+CREATE TABLE IF NOT EXISTS `setting` (
+  `tokenKey` varchar(100) DEFAULT NULL,
+  `tokenSecret` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table appinven.setting: ~1 rows (approximately)
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
 INSERT INTO `setting` (`tokenKey`, `tokenSecret`) VALUES
 	('879af692', 'lnAXBX6a3A31DCpu');
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
--- Dumping data for table appinven.user: ~0 rows (approximately)
+-- Dumping structure for table appinven.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `pass` varchar(150) DEFAULT NULL,
+  `kategori` enum('admin','user') DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table appinven.user: ~2 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `pass`, `kategori`) VALUES
 	(1, 'developer', 'admin', 'admin'),
