@@ -1,0 +1,8 @@
+Jalanin mysql
+Import databasenya dulu
+Login 
+ username mandor => admin
+ username developer => user
+
+
+
